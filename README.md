@@ -2,6 +2,8 @@
 
 Automatically remove silence from your video
 
+### Youtube tutorial -> https://youtu.be/O8sgcHyXGLI
+
 ### Demo
 
 Video with silence (35 seconds)
