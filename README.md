@@ -4,6 +4,8 @@ Automatically remove silence from your video
 
 ### Youtube tutorial -> https://youtu.be/O8sgcHyXGLI
 
+### Medium article -> https://medium.com/@anilmatcha/autoshorts-ai-ai-silence-remover-in-python-tutorial-2ff1062a0150
+
 ### Demo
 
 Video with silence (35 seconds)
