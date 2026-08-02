@@ -8,6 +8,8 @@ A focused Python SDK and MCP server for Wan 3.0-compatible AI video-generation A
 
 ## Related Projects
 
+- [Wan 3 on MuAPI](https://muapi.ai/wan-3) — Model landing page for Wan video-generation workflows.
+- [MuAPI video-generation docs](https://muapi.ai/docs/video-generation) — Unified API request and polling patterns.
 - [awesome-ai-video-models](https://github.com/Anil-matcha/awesome-ai-video-models) — compare AI video models by API, price, and speed.
 - [Open-Generative-AI](https://github.com/Anil-matcha/Open-Generative-AI) — open-source AI media studio for image and video workflows.
 - [Seedance-2-API](https://github.com/Anil-matcha/Seedance-2-API) — Python SDK for ByteDance Seedance video generation.
