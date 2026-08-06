@@ -7,7 +7,7 @@
 A focused Python SDK and MCP server for Wan 3.0-compatible AI video-generation APIs. It supports text-to-video, image-to-video, multimodal reference-to-video, file upload, and asynchronous job polling.
 
 <p align="center"><a href="https://youtu.be/T4Oddw74O44"><img src="https://i.ytimg.com/vi/T4Oddw74O44/maxresdefault.jpg" width="720"></a></p>
-<p align="center"><a href="https://youtu.be/pq0B_A0K770"><b>▶ Watch: How to Access Wan 3.0 API - Best Uncensored Alternative to Seedance 2 </b></a></p>
+<p align="center"><a href="https://youtu.be/T4Oddw74O44"><b>▶ Watch: How to Access Wan 3.0 API - Best Uncensored Alternative to Seedance 2 </b></a></p>
 
 ## Related Projects
 
