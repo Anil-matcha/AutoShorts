@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
 
-A focused Python SDK and MCP server for Wan 3.0-compatible AI video-generation APIs. It supports text-to-video, image-to-video, multimodal reference-to-video, file upload, and asynchronous job polling.
+A focused Python SDK and MCP server for the [Wan 3.0 API on MuAPI](https://muapi.ai/wan-3). It supports text-to-video, image-to-video, multimodal reference-to-video (up to 10 reference images, 5 reference videos, and 5 reference audios), synchronized audio, file upload, and asynchronous job polling.
 
 <p align="center"><a href="https://youtu.be/T4Oddw74O44"><img src="https://i.ytimg.com/vi/T4Oddw74O44/maxresdefault.jpg" width="720"></a></p>
 <p align="center"><a href="https://youtu.be/T4Oddw74O44"><b>▶ Watch: How to Access Wan 3.0 API - Best Uncensored Alternative to Seedance 2 </b></a></p>
@@ -41,9 +41,9 @@ from wan_api import WanAPI
 api = WanAPI()
 job = api.text_to_video(
     "A cinematic tracking shot of a red fox crossing a snowy forest at sunrise",
+    resolution="720p",
     aspect_ratio="16:9",
     duration=5,
-    resolution="720p",
 )
 
 result = api.wait_for_completion(job["request_id"])
@@ -55,8 +55,20 @@ print(result)
 ```python
 job = api.image_to_video(
     prompt="The subject turns toward camera as a gentle breeze moves their hair.",
-    images_list=["https://example.com/reference.jpg"],
+    image_url="https://example.com/reference.jpg",
     aspect_ratio="9:16",
+    duration=5,
+)
+```
+
+## Reference to video
+
+```python
+job = api.reference_to_video(
+    prompt="The person from the reference image walks into the room shown in the reference video.",
+    images_list=["https://example.com/character.jpg"],
+    videos_list=["https://example.com/room.mp4"],
+    resolution="720p",
     duration=5,
 )
 ```
@@ -65,11 +77,13 @@ job = api.image_to_video(
 
 | Method | Purpose |
 | --- | --- |
-| `text_to_video()` | Create a video from a text prompt. |
-| `image_to_video()` | Animate one or more image URLs. |
-| `reference_to_video()` | Condition a video on image, video, or audio references. |
+| `text_to_video()` | Create a video with synchronized audio from a text prompt. |
+| `image_to_video()` | Animate a source image, with optional end-frame guidance via `last_image`. |
+| `reference_to_video()` | Condition a video on up to 10 reference images, 5 reference videos, and 5 reference audios. |
 | `upload_file()` | Upload a local reference file. |
 | `get_result()` / `wait_for_completion()` | Retrieve an asynchronous job's output. |
+
+Every method also accepts `resolution` (`480p`, `720p`, `1080p`), `duration` (2-30 seconds), `thinking_mode` (deeper reasoning for complex prompts), `enable_audio`, and `seed`.
 
 ## MCP server
 
@@ -83,7 +97,7 @@ The server provides `text_to_video`, `image_to_video`, `reference_to_video`, and
 
 ## Endpoint compatibility
 
-The client uses `wan-3.0-t2v`, `wan-3.0-i2v`, and `wan-3.0-reference-to-video` paths beneath `WAN_API_BASE_URL`. If your provider names its endpoints differently, pass that provider's compatible base URL or adapt the small client module before use.
+The client uses the `wan3.0-text-to-video`, `wan3.0-image-to-video`, and `wan3.0-reference-to-video` paths beneath `WAN_API_BASE_URL`. If your provider names its endpoints differently, pass that provider's compatible base URL or adapt the small client module before use.
 
 ## License
 

@@ -14,21 +14,56 @@ def _api() -> WanAPI:
 
 
 @mcp.tool()
-def text_to_video(prompt: str, aspect_ratio: str = "16:9", duration: int = 5, resolution: str = "720p", audio: bool = False) -> str:
-    """Generate a Wan video from a descriptive text prompt."""
-    return json.dumps(_api().text_to_video(prompt, aspect_ratio=aspect_ratio, duration=duration, resolution=resolution, audio=audio), indent=2)
+def text_to_video(
+    prompt: str, resolution: str = "720p", aspect_ratio: str = "16:9",
+    duration: int = 5, thinking_mode: bool = False, enable_audio: bool = True,
+    seed: int = -1,
+) -> str:
+    """Generate a Wan video with synchronized audio from a descriptive text prompt."""
+    return json.dumps(
+        _api().text_to_video(
+            prompt, resolution=resolution, aspect_ratio=aspect_ratio, duration=duration,
+            thinking_mode=thinking_mode, enable_audio=enable_audio, seed=seed,
+        ),
+        indent=2,
+    )
 
 
 @mcp.tool()
-def image_to_video(prompt: str, images_list: list[str], aspect_ratio: str = "16:9", duration: int = 5, resolution: str = "720p", audio: bool = False) -> str:
-    """Animate one or more image URLs into a Wan video."""
-    return json.dumps(_api().image_to_video(prompt, images_list, aspect_ratio=aspect_ratio, duration=duration, resolution=resolution, audio=audio), indent=2)
+def image_to_video(
+    prompt: str, image_url: str, last_image: Optional[str] = None,
+    resolution: str = "720p", aspect_ratio: str = "16:9", duration: int = 5,
+    thinking_mode: bool = False, enable_audio: bool = True, seed: int = -1,
+) -> str:
+    """Animate a source image URL into a Wan video with synchronized audio."""
+    return json.dumps(
+        _api().image_to_video(
+            prompt, image_url, last_image=last_image, resolution=resolution,
+            aspect_ratio=aspect_ratio, duration=duration, thinking_mode=thinking_mode,
+            enable_audio=enable_audio, seed=seed,
+        ),
+        indent=2,
+    )
 
 
 @mcp.tool()
-def reference_to_video(prompt: str, images_list: Optional[list[str]] = None, video_urls: Optional[list[str]] = None, audio_urls: Optional[list[str]] = None, aspect_ratio: str = "16:9", duration: int = 5, resolution: str = "720p") -> str:
-    """Generate a Wan video conditioned on image, video, and/or audio URLs."""
-    return json.dumps(_api().reference_to_video(prompt, images_list=images_list, video_urls=video_urls, audio_urls=audio_urls, aspect_ratio=aspect_ratio, duration=duration, resolution=resolution), indent=2)
+def reference_to_video(
+    prompt: str, images_list: Optional[list[str]] = None,
+    videos_list: Optional[list[str]] = None, audios_list: Optional[list[str]] = None,
+    resolution: str = "720p", aspect_ratio: str = "16:9", duration: int = 5,
+    thinking_mode: bool = False, enable_audio: bool = True, seed: int = -1,
+) -> str:
+    """Generate a Wan video conditioned on up to 10 reference images, 5 reference
+    videos, and 5 reference audios."""
+    return json.dumps(
+        _api().reference_to_video(
+            prompt, images_list=images_list, videos_list=videos_list,
+            audios_list=audios_list, resolution=resolution, aspect_ratio=aspect_ratio,
+            duration=duration, thinking_mode=thinking_mode, enable_audio=enable_audio,
+            seed=seed,
+        ),
+        indent=2,
+    )
 
 
 @mcp.tool()
