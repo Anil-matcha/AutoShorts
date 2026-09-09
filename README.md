@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/anil-matcha-wan-3-0-api-badge.png)](https://mseep.ai/app/anil-matcha-wan-3-0-api)
+
 # Wan 3.0 API — Python Wrapper
 
 [![Powered by MuAPI](https://img.shields.io/badge/Powered%20by-MuAPI-6366f1?style=flat-square)](https://muapi.ai)
